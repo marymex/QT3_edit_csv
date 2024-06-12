@@ -7,7 +7,7 @@ NOTICE. THIS TASK SHOULD ONLY BE ATTEMPTED UPON COMPLETING QT_display_csv task (
 Examine the project QT_edit_csv.pro. 
 This project outputs a csv file on the form using a tableWidget as shown in the picture.
 
-![form_with_data](https://github.com/marymex/QT_display_csv/blob/main/form_with_data.jpg)
+![dialog_form4](https://github.com/marymex/QT_edit_csv/blob/main/dialog_form4.jpg)
 
 This project also is able to edit the table when the user double-clicks a cell in it (see the picture). 
 
