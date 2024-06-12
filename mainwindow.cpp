@@ -5,14 +5,16 @@
 #include <QMessageBox>
 #include "dialog.h"
 
+QString* MainWindow::changedData;
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     edit = new Dialog(this);
-    connect(edit, &Dialog::firstWindow, this, &MainWindow::show);
-    connect(edit, &Dialog::valueChanged, this, &MainWindow::change);
+    //connect(edit, &Dialog::firstWindow, this, &MainWindow::show);
+    //connect(edit, &Dialog::valueChanged, this, &MainWindow::change);
 }
 
 MainWindow::~MainWindow()
@@ -68,18 +70,12 @@ void MainWindow::on_actionSave_2_triggered()
 
 void MainWindow::on_tableView_doubleClicked(const QModelIndex &index)
 {
-    row = index.row();
-    column = index.column();
+    //row = index.row();
+    //column = index.column();
+    changedData = &(_data[index.row()][index.column()]);
     edit->show();
-    this->hide();
 }
 
-void MainWindow::change()
-{
-    _data[row][column] = edit->value;
-    QApplication::processEvents();
-    this->show();
-}
 
 
 

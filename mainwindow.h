@@ -19,12 +19,15 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    static QString* changedData;
+
+
 private slots:
 
     void on_actionOpen_2_triggered();
     void on_actionSave_2_triggered();
     void on_tableView_doubleClicked(const QModelIndex &index);
-    void change();
+    //void change();
 
 private:
     Ui::MainWindow *ui;
@@ -33,6 +36,6 @@ private:
     QList<QString>   _headers;
     table_model* model;
     Dialog* edit;
-    int row, column;
+
 };
 #endif // MAINWINDOW_H

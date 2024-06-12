@@ -1,5 +1,6 @@
 #include "dialog.h"
 #include "ui_dialog.h"
+#include "mainwindow.h"
 
 Dialog::Dialog(QWidget *parent)
     : QDialog(parent)
@@ -15,21 +16,16 @@ Dialog::~Dialog()
 
 void Dialog::on_buttonBox_accepted()
 {
-    value =  ui->lineEdit->text();
+    *MainWindow::changedData = ui->lineEdit->text();
     ui->lineEdit->setText("");
-    //ui->isChanged = true;
     this->close();
-    emit valueChanged();
+
 }
 
 
 void Dialog::on_buttonBox_rejected()
 {
     ui->lineEdit->setText("");
-    //ui->isChanged = false;
-
     this->close();
-    emit firstWindow();
-
 }
 
