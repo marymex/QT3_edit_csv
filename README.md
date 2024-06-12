@@ -13,9 +13,11 @@ This project also is able to edit the table when the user double-clicks a cell i
 
 ![dialog_form](https://github.com/marymex/QT_edit_csv/blob/main/dialog_form.jpg)
 
+![dialog_form2](https://github.com/marymex/QT_edit_csv/blob/main/dialog_form2.jpg)
+
 The user is able to save the changed file in a different .csv file by chosing the "Save" option in the menu. 
 
-![dialog_form2](https://github.com/marymex/QT_edit_csv/blob/main/dialog_form2.jpg)
+![dialog_form3](https://github.com/marymex/QT_edit_csv/blob/main/dialog_form3.jpg)
 
 Run the project and check this functionality.
 
