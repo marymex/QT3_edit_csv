@@ -39,11 +39,11 @@ Each form typically has 3 files with code with the following extensions .h .cpp 
 To add a new form to your project you need to press "add new file" and then do the following steps (see pictures).
 
 
-![adding_form1](https://github.com/marymex/QT_edit_csv/blob/main/dialog_form1.jpg)
+![adding_form1](https://github.com/marymex/QT_edit_csv/blob/main/adding_form1.jpg)
 
-![adding_form2](https://github.com/marymex/QT_edit_csv/blob/main/dialog_form2.jpg)
+![adding_form2](https://github.com/marymex/QT_edit_csv/blob/main/adding_form2.jpg)
 
-![adding_form3](https://github.com/marymex/QT_edit_csv/blob/main/dialog_form3.jpg)
+![adding_form3](https://github.com/marymex/QT_edit_csv/blob/main/adding_form3.jpg)
 
 Those acctions will result in the following files added to the project: dialog.cpp, dialog.h and dialog.ui. 
 
@@ -76,7 +76,7 @@ In this project we set up this variable in mainwindow.cpp (see the picture)
 
 ![connecting3](https://github.com/marymex/QT_edit_csv/blob/main/connecting_mainwindow_and_dialog3.jpg)
 
-We are going to store the address of the double-clicked tableView cell inside this static variable changedData (see picture).
+We are going to store the address of the double-clicked tableView cell inside this static variable QString& changedData (see picture).
 
 ![connecting4](https://github.com/marymex/QT_edit_csv/blob/main/connecting_mainwindow_and_dialog4.jpg)
 
@@ -103,5 +103,13 @@ void Dialog::on_buttonBox_accepted()
 }
 ```
 
-You need to generate the signal from the "Cancel" button on your own and impement the resulting slot function. 
+Now you need to generate the signal from the "Cancel" button and impement the resulting slot function. 
+
+```sh
+void Dialog::on_buttonBox_rejected()
+{
+    ui->lineEdit->setText() = "";
+    this->close();
+}
+```
 Now your project should be ready. Please run it and test it. 
