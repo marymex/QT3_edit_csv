@@ -67,12 +67,12 @@ void MainWindow::on_tableView_doubleClicked(const QModelIndex &index)
 }
 ```
 To pass information from the mainwindow form to the dialog form we are going to use a static variable inside MainWindow class (mainwindow.h).
-Static variables are declared with the key work static inside the class (see the picture):
+Static variables are declared with the key word static inside the class (see the picture):
 
 ![connecting2](https://github.com/marymex/QT_edit_csv/blob/main/connecting_mainwindow_and_dialog2.jpg)
 
-However, once the static variable is declared, it needs to be set up somewhere in the memory.
-In this project we set up this variable in mainwindow.cpp (see the picture)
+However, once the static variable is declared, it needs to be initialized somewhere in the memory.
+In this project we initialize this variable in mainwindow.cpp (see the picture)
 
 ![connecting3](https://github.com/marymex/QT_edit_csv/blob/main/connecting_mainwindow_and_dialog3.jpg)
 
