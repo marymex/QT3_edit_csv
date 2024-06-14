@@ -147,7 +147,7 @@ void Dialog::on_buttonBox_accepted()
     this->close();
 }
 ```
-The line ui->lineEdit->setText() = ""; sets text to zero in the lineEdit widget.
+The line "ui->lineEdit->setText() = ""; sets text to zero in the lineEdit widget.
 The line "this->close();" hides the dialog form. 
 Now you need to generate the signal from the "Cancel" button and impement the resulting slot function. 
 
