@@ -65,7 +65,7 @@ then choose double-clicked (see the picture).
 
 ![connecting2](https://github.com/marymex/QT_edit_csv/blob/main/connecting_mainwindow_and_dialog2.jpg)
 
-Those actions auto-generate the function on_tableView_doubleClicked() in mainwindow.cpp:
+Those actions auto-generate the function "on_tableView_doubleClicked()" in mainwindow.cpp:
 
 ```sh
 void MainWindow::on_tableView_doubleClicked(const QModelIndex &index)
@@ -82,7 +82,7 @@ In this project we define this variable in mainwindow.cpp (see the picture of ma
 
 ![connecting5](https://github.com/marymex/QT_edit_csv/blob/main/connecting_mainwindow_and_dialog5.jpg)
 
-We are going to store the address of the double-clicked tableView cell inside this static variable QString& changedData.
+We are going to store the address of the double-clicked tableView cell inside this static variable "QString& changedData".
 Now we implement the code of "MainWindow::on_tableView_doubleClicked(const QModelIndex &index)" in mainwindow.cpp 
 
 ```sh
