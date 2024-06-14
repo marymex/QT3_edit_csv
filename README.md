@@ -147,7 +147,8 @@ void Dialog::on_buttonBox_accepted()
     this->close();
 }
 ```
-
+The line ui->lineEdit->setText() = ""; sets text to zero in the lineEdit widget.
+The line "this->close();" hides the dialog form. 
 Now you need to generate the signal from the "Cancel" button and impement the resulting slot function. 
 
 ```sh
@@ -157,4 +158,6 @@ void Dialog::on_buttonBox_rejected()
     this->close();
 }
 ```
+The code in this function is similar to the code in the "on_buttonBox_accepted()" function.
+The only difference is that here we do not change the "MainWindow::changedData" variable and this means that we do not change the cell in tableView. 
 Now your project should be ready. Please run it and test it. 
