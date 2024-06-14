@@ -101,8 +101,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     edit = new Dialog(this);
-    //connect(edit, &Dialog::firstWindow, this, &MainWindow::show);
-    //connect(edit, &Dialog::valueChanged, this, &MainWindow::change);
 }
 ```
 The variable "edit" is declared in mainwindow.h with the line "Dialog* edit" (see mainwindow.h for reference). 
