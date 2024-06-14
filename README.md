@@ -59,7 +59,11 @@ Right-click the tableView and choose go to slot (see picture).
 
 ![connecting1](https://github.com/marymex/QT_edit_csv/blob/main/connecting_mainwindow_and_dialog1.jpg)
 
-then choose double-clicked. Those actions auto-generate the function on_tableView_doubleClicked() in mainwindow.cpp:
+then choose double-clicked (see the picture).
+
+![connecting2](https://github.com/marymex/QT_edit_csv/blob/main/connecting_mainwindow_and_dialog2.jpg)
+
+Those actions auto-generate the function on_tableView_doubleClicked() in mainwindow.cpp:
 
 ```sh
 void MainWindow::on_tableView_doubleClicked(const QModelIndex &index)
@@ -67,23 +71,64 @@ void MainWindow::on_tableView_doubleClicked(const QModelIndex &index)
 }
 ```
 To pass information from the mainwindow form to the dialog form we are going to use a static variable inside MainWindow class (mainwindow.h).
-Static variables are declared with the key word static inside the class (see the picture):
-
-![connecting2](https://github.com/marymex/QT_edit_csv/blob/main/connecting_mainwindow_and_dialog2.jpg)
-
-However, once the static variable is declared, it needs to be defined somewhere in the memory.
-In this project we define this variable in mainwindow.cpp (see the picture)
-
-![connecting3](https://github.com/marymex/QT_edit_csv/blob/main/connecting_mainwindow_and_dialog3.jpg)
-
-We are going to store the address of the double-clicked tableView cell inside this static variable QString& changedData (see picture).
+Static variables are declared with the key word static inside the class (see the picture of mainwindow.h, line 22):
 
 ![connecting4](https://github.com/marymex/QT_edit_csv/blob/main/connecting_mainwindow_and_dialog4.jpg)
 
-The line "edit->show()" means that the dialog form will become the active window. 
+However, once the static variable is declared, it needs to be defined somewhere in the memory.
+In this project we define this variable in mainwindow.cpp (see the picture of mainwindow.cpp, line 8)
+
+![connecting5](https://github.com/marymex/QT_edit_csv/blob/main/connecting_mainwindow_and_dialog5.jpg)
+
+We are going to store the address of the double-clicked tableView cell inside this static variable QString& changedData.
+Now we implement the code of "MainWindow::on_tableView_doubleClicked(const QModelIndex &index)" in mainwindow.cpp 
+
+```sh
+void MainWindow::on_tableView_doubleClicked(const QModelIndex &index)
+{
+    changedData = &(_data[index.row()][index.column()]);
+    edit->show();
+}
+```
+Inside the constructor of the MainWindow class we create a new Dialog window with the line "edit = new Dialog(this)":
+
+```sh
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+    edit = new Dialog(this);
+    //connect(edit, &Dialog::firstWindow, this, &MainWindow::show);
+    //connect(edit, &Dialog::valueChanged, this, &MainWindow::change);
+}
+```
+The variable "edit" is declared in mainwindow.h with the line "Dialog* edit" (see mainwindow.h for reference). 
+This variable is responsible for the new dialog window.
+The line "edit->show()" in "on_tableView_doubleClicked(const QModelIndex &index)" function means that the dialog form will become the active window. 
 
 Now we move on th the dialog form. The dialog form will be using the static variable "changedData" to pass new value from the user to tableView.
 For this reason we need to include "mainwindow.h" in "dialog.cpp" and "dialog.h" in "mainwindow.cpp". So those 2 forms can "see" each other. 
+(see includes in "mainwindow.h" and "dialog.h")
+
+in mainwindow.cpp:
+
+```sh
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+#include "QFileDialog"
+#include "readwrite.h"
+#include <QMessageBox>
+#include "dialog.h" // HERE
+```
+
+in dialog.cpp:
+
+```sh
+#include "dialog.h"
+#include "ui_dialog.h"
+#include "mainwindow.h" // HERE
+```
 
 ## "Ok" and "Cancel" buttons on the dialog form. 
 
