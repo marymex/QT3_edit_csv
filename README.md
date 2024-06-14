@@ -47,6 +47,8 @@ To add a new form to your project you need to press "add new file" and then do t
 
 Those acctions will result in the following files added to the project: dialog.cpp, dialog.h and dialog.ui. 
 
+![dialog_forms_added](https://github.com/marymex/QT_edit_csv/blob/main/dialog_forms_added.jpg)
+
 We are going to put a lineEdit on the dialog.ui form. This widget will be used for editing a cell in the table. 
 
 ![dialog1](https://github.com/marymex/QT_edit_csv/blob/main/dialog1.jpg)
